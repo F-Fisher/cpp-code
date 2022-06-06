@@ -1,0 +1,22 @@
+#include<iostream>
+using namespace std;
+
+ int *func()
+{
+	 //利用new关键字可以将数字开辟到堆区
+	 int * p = new int(10);//返回地址
+	 return p;
+
+
+}
+int main()
+{
+	//在堆区开辟新内存
+	//指针本质是局部变量，放在栈上，之针指向的数据存放在堆区
+	int* p = func();
+	cout << *p << endl;
+	system("pause");
+	return 0;
+
+
+}
