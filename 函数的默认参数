@@ -1,0 +1,23 @@
+#include<iostream>
+using namespace std;
+
+//函数默认参数
+
+int func(int a, int b=20,int c=30)//默认参数之后其他都必须为默认参数
+{
+	return a + b + c;
+}
+//如果凹函数声明有默认参数，函数实现不能有默认参数
+//声明和实现只能有一个有默认参数
+int func2(int a = 10, int b = 20);
+int func2(int a, int b)//不能有默认
+{
+	return a + b;
+}
+int main()
+{
+	cout << func(10) << endl;//a = 10;b = 20(默认)，c = 30（默认）；
+	cout << func(10,30) << endl;//a = 10;b = 30，c = 30（默认）；
+	system("pause");
+	return 0;
+}
