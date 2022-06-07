@@ -1,0 +1,23 @@
+#include<iostream>
+using namespace std;
+void test1()
+{
+	//创建10个整型数组，存放在堆区
+	int* arr = new int[10];//10代表10个元素
+	for (int i = 0; i < 10; i++)
+	{
+		arr[i] = i + 100;//给十个数赋值100-109
+	}
+	for (int i = 0; i < 10; i++)
+	{
+		cout << arr[i] << endl;
+	}
+	//释放堆数组
+	delete[]arr;//加[]表示释放数组
+}
+int main()
+{
+	test1();
+	system("pause");
+	return 0;
+}
