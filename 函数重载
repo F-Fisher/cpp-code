@@ -1,0 +1,45 @@
+#include<iostream>
+using namespace std;
+//函数重载  可以让函数名相同
+//三个要求
+// 1 同一作用域下 
+// 2 函数名相同 
+// 3 函数类型不同或个数不同或者顺序不同
+//注意 函数的返回值不可以做为函数重载的条件
+
+void func()
+{
+	cout << "func1" << endl;
+}
+void func(int a)
+{
+	cout << "func2" << endl;
+}
+void func(double a)
+{
+	cout << "func3" << endl;
+}
+void func(int a,double b)
+{
+	cout << "func4" << endl;
+}
+void func(double a,int b)
+{
+	cout << "func5" << endl;
+}
+//注意 函数的返回值不可以做为函数重载的条件
+//int func(double a, int b)
+//{
+//	cout << "func5" << endl;//  错误
+//}
+int main()
+{
+
+	func();//调用第一个
+	func(10);//调用第二个
+	func(3.14);//调用第三个
+	func(1, 3.14);// 4
+	func(3.14, 1);// 5
+	system("pause");
+	return 0;
+}
