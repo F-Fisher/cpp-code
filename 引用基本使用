@@ -1,0 +1,28 @@
+#include<iostream>
+using namespace std;
+
+void test()
+{
+	//引用注意事项
+	int a;
+	a = 10;
+	int&b = a;
+	//int& b;//错误，
+	// 1 在引用的时候必须初始化
+	// 2 初始化后无法更改
+
+}
+int main()
+{
+	//引用：给变量起别名
+	int a;
+	int& b = a;
+	a = 20;
+	cout << a << endl;//b已经通过a赋值
+	cout << b << endl;
+	b = 100;
+	cout << a << endl;//a已经通过b赋值
+	cout << b << endl;
+	system("pause");
+	return 0;
+}
