@@ -1,0 +1,17 @@
+#include<iostream>
+using namespace std;
+
+//占位参数
+//目前占位参数用不到，后面会用
+//占位参数可以有默认值，有默认后可以不需要传入
+void func(int a, int = 10)
+{
+	cout << "yes" << endl;
+}
+
+int main()
+{
+	func(10, 10);
+	system("pause");
+	return 0;
+}
