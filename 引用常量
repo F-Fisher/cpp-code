@@ -1,0 +1,26 @@
+#include<iostream>
+using namespace std;
+
+void showValue( const int& vai)//加const后传入数据不会改变，防止主函数中的a改变
+{
+
+	cout << vai << endl;
+}
+int main()
+{
+
+	//常量引用
+	//使用场景：修饰形参，防止误操作
+
+
+	//int a = 10;
+	//加上const 编译器等于   int temp = 10;const int &ref = temp;
+	//const int& ref = 10;//引用必须引用合法储存空间,
+	//ref = 20;//加入const为只读状态，不可修改；
+
+
+	int a = 100;
+	showValue(a);
+	system("pause");
+	return 0;
+}
