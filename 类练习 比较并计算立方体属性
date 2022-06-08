@@ -1,0 +1,99 @@
+#include<iostream>
+#include<string>
+using namespace std;
+
+class Cube
+{
+public:
+	void setNum(int l, int w, int h)
+	{
+		m_l = l;
+		m_w = w;
+		m_h = h;
+	}
+	int outl()
+	{
+		return m_l;
+	}
+	int outw()
+	{
+		return m_w;
+	}
+	int outh()
+	{
+		return m_h;
+	}
+	int outS()
+	{
+		return 2 * ((m_h * m_l) +( m_h * m_w) +( m_l * m_w));
+	}
+	int outV()
+	{
+		return (m_h * m_l * m_w);
+	}
+	bool isSamebyclass(Cube& c)//用类判断立方体是否相同
+	{
+		if (m_h == c.outh() && m_l == c.outl() && m_w == c.outw())
+		{
+			return true;
+		}
+		else {
+			return false;
+		}
+
+	}
+
+
+private:
+	int m_l;
+	int m_w;
+	int m_h;
+};
+bool isSame(Cube& p, Cube& p1)//用全局函数判断立方体是否相同
+{
+	if (p.outh() == p1.outh() && p.outl() == p1.outl() && p.outw() == p1.outw())
+	{
+		return true;
+	}
+	else {
+		return false;
+	}
+
+}
+
+int main()
+{
+	Cube p;
+	int a, b, c,d,e,f;
+	cout << "请输入立方体的长宽高" << endl;
+	cin >> a;
+	cin >> b;
+	cin >> c;
+	p.setNum(a, b, c);
+	cout << "表面积 = " << p.outS() << endl;
+	cout << "体积   = " << p.outV() << endl;
+	Cube p1;
+	cout << "请输入第二立方体的长宽高" << endl;
+	cin >> d;
+	cin >> e;
+	cin >> f;
+	p1.setNum(d,e,f);
+	if (isSame(p, p1) == true)
+	{
+		cout << "相同-1" << endl;
+	}
+	else 
+	{
+		cout << "不相同-1" << endl;
+	}
+	if (p.isSamebyclass(p1) == true)
+	{
+		cout << "相同-2" << endl;
+	}
+	else
+	{
+		cout << "不相同-2" << endl;
+	}
+	system("pause");
+	return 0;
+}
