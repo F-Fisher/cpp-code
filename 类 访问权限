@@ -1,0 +1,40 @@
+#include<iostream>
+#include<string>
+using namespace std;
+//访问权限
+//三种
+//共有权限  public      成员  类内可以访问 类外可以访问
+//保护权限  protected   成员  类内可以访问 类外不可以访问 子可访
+//私有权限  private     成员  类内可以访问 类外不可以访问 子不可访
+
+class Person
+{
+	//公共
+public:
+	string m_name;
+	//保护
+protected:
+	string m_car;
+	//私有
+private:
+	int m_passwoard;
+public:
+	void func()//类内都可以访问
+	{
+		m_name = "ffisher";
+		m_car = "binli";
+		m_passwoard = 123;
+	}
+
+
+};
+int main()
+{
+	
+	Person p1;
+	p1.m_name = "fi";
+	//p1.m_car = "we";       类内可以访问 类外不可以访问  
+	//p1.m_passwoard = 123;  类内可以访问 类外不可以访问 
+	system("pause");
+	return 0;
+}
