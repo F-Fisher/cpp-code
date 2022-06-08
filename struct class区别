@@ -1,0 +1,25 @@
+#include<iostream>
+using namespace std;
+
+//struct和class区别
+//struct默认权限公共
+//class默认私有
+class C1 
+{
+	int m_a;//默认私有
+};
+struct C2
+{
+	int m_a;//默认公共
+};
+int main()
+{
+	C1 c1;
+	//c1.m_a = 100;//私有报错
+	C2 c2;
+	c2.m_a = 100;//公共
+
+
+	system("pause");
+	return 0;
+}
