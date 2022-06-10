@@ -1,0 +1,54 @@
+#include<iostream>
+using namespace std;
+
+//构造函数的调用规则
+//创建一个类，系统会默认添加三个构造函数 默认构造 析构构造 拷贝构造
+// 1 如果用户定义有参构造函数,编译器不会提供默认构造，依然提供拷贝构造
+// 2 如果用户定义拷贝构造函数，编译器不会提供其他构造函数
+class Person
+{
+public:
+	Person()
+	{
+		cout << "默认构造函数" << endl;
+	}
+	Person(int age)
+	{
+		cout << "有参构造函数" << endl;
+		m_age = age;
+	}
+	/*Person(const Person& p)
+	{
+		cout << "拷贝构造函数" << endl;
+		m_age = p.m_age;
+	}*/
+	~Person()
+	{
+		cout << "析构函数" << endl;
+	}
+	int m_age;
+
+};
+void test01()
+{
+	Person p;
+	p.m_age = 18;
+	Person p1(p);
+	cout << "p age" << p1.m_age << endl;
+
+}
+void test02()
+{
+	Person p;
+}
+
+int main()
+{
+	//test01();
+	test02();//没有提供默认，调用失败
+
+
+
+	system("pause");
+	return 0;
+}
