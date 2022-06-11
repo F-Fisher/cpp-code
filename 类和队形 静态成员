@@ -1,0 +1,60 @@
+#include<iostream>
+#include<string>
+using namespace std;
+
+//静态成员变量
+// 
+//静态成员变量
+//  所有对象共享一份数据
+//  在编译阶段分配内存
+//  类内声明，类外初始化
+// 
+//静态成员函数
+// 所有对象共享一个函数
+// 静态成员函数只能访问静态成员变量
+
+
+class Person
+{
+public:
+
+	//所有对象共享统一数据 编译阶段就分配内存 类内声明，类外初始化操作
+	static int m_a;
+	//静态成员也有访问权限
+private:
+	static int m_b;
+};
+ 
+ int Person:: m_a=100;//类外初始化操作
+ int Person::m_b=200;
+
+void test01()
+{
+	
+	Person p;
+	cout << p.m_a << endl;//100
+	Person p2;
+	p2.m_a = 200;
+	cout << p.m_a << endl;//200 输出200，因为共用一个数据
+}
+void test02()
+{
+	//静态成员变量不属于摸个对象上，所有对象共同访问同一份数据
+	//因此静态成员变量有两种访问方式
+
+	// 1 通过对象进行访问
+	/*Person p;
+	cout << p.m_a << endl;*/
+
+	// 2 通过类名进行访问
+	cout << Person::m_a << endl;
+	//cout << Person::m_b << endl; //类外访问不到私有静态成员
+
+}
+int main()
+{
+	//test01();
+	test02();
+	system("pause");
+	return 0;
+}
