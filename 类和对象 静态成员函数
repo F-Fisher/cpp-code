@@ -1,0 +1,44 @@
+#include<iostream>
+#include<string>
+using namespace std;
+
+
+//静态成员函数
+// 所有对象共享一个函数
+// 静态成员函数只能访问静态成员变量
+
+class Person
+{
+public:
+	static void func()
+	{
+		m_a = 100;//静态成员函数能够访问静态成员变量
+		//m_b = 200;//静态成员函数不能访问非静态成员变量,无法区分是哪一个对象的变量
+		cout << "func" << endl;
+	}
+	//静态成员函数也是有访问权限的
+	static int m_a;
+	int m_b;
+private:
+	static void func1()
+	{
+		cout << "func2" << endl;
+	}
+};
+
+int Person::m_a = 1;
+void test01()
+{
+	//通过对象访问
+	Person p;
+	p.func();
+	//通过类调用
+	Person::func();
+	//Person::func1();//私有类外无法访问
+}
+int main()
+{
+	test01();
+	system("pause");
+	return 0;
+}
