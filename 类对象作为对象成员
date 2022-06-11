@@ -1,0 +1,46 @@
+#include<iostream>
+#include<string>
+using namespace std;
+
+//类对象作为类成员
+
+class Phone
+{
+public:
+	Phone(string pname)
+	{
+		cout << "phone 构造" << endl;
+		p_name = pname;
+	}
+	string p_name;
+	~Phone()
+	{
+		cout << "phone析构" << endl;
+	}
+};
+class Person
+{
+public:
+	//Phone m_phone = pname 隐式转换法
+	Person(string name, string pname) :m_name(name),m_phone(pname)//初始化列表
+	{
+		cout << "person构造" << endl;
+	}
+	string m_name;
+	Phone m_phone;//先构造成员对象后构造本对象，先析构本对象后析构成员对象
+	~Person()
+	{
+		cout << "person析构" << endl;
+	}
+};
+void test01()
+{
+	Person p("ffisher", "iphone");
+	cout << p.m_name <<" " << p.m_phone.p_name << endl;
+}
+int main()
+{
+	test01();
+	system("pause");
+	return 0;
+}
