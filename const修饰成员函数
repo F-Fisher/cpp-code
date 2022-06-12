@@ -1,0 +1,46 @@
+#include<iostream>
+using namespace std;
+
+
+//const修饰成员函数
+
+
+//常函数
+class Person
+{
+public:
+	//this指针本质是一个指针常量 ，指针指向是不可以修改的
+	void showPerson() const
+	{
+		//m_a = 100;
+		m_b = 10;
+	}
+	void func()
+	{
+		cout << "a" << endl;
+	}
+	int m_a;
+	mutable int m_b;//加mutablq，常函数中也可修改
+
+};
+void test01()
+{
+	Person p;
+	p.showPerson();
+
+}
+//常对象
+void test02()
+{
+	const Person p;
+	//p.m_a = 100;
+	p.m_b = 100;
+	//常对象只能调用常对象
+	//p.func();//常对象不可以调用普通成员函数
+}
+int main()
+{
+	test01();
+	system("pause");
+	return 0;
+}
