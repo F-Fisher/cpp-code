@@ -1,0 +1,44 @@
+#include<iostream>
+using namespace std;
+
+//空指针访问成员函数
+
+class Person
+{
+public:
+	void showClassname()
+	{
+		cout << "this is Person class name" <<endl;
+	}
+	void showPersonage()
+	{
+		if (this == NULL)
+		{
+			return;
+		}
+		//报错是因为传入指针为NULL
+		cout << "age = " << this->m_age << endl;
+	}
+	int m_age;
+	
+};
+
+
+void test01()
+{
+	Person* p = NULL;
+	p->showClassname();
+	p->showPersonage();
+
+}
+
+void test02()
+{
+	
+}
+int main()
+{
+	test01();
+	system("pause");
+	return 0;
+}
