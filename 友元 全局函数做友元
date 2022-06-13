@@ -1,0 +1,35 @@
+#include<iostream>
+#include<string.h>
+using namespace std;
+class Building
+{
+	friend void goodGay(Building* building);//友元定义
+public:
+	Building()
+	{
+		m_SettingRoom = "客厅";
+		m_BedRoom = "卧室";
+	}
+	string m_SettingRoom;
+private:
+	string m_BedRoom;
+};
+//全局函数
+void goodGay(Building* building)
+{
+	cout << "正在访问" << building->m_SettingRoom << endl;
+	cout << "正在访问" << building->m_BedRoom << endl;
+}
+void test01()
+{
+	Building building;
+goodGay(&building);
+}
+int main()
+{
+	
+	test01();
+	system("pause");
+	return 0;
+
+}
