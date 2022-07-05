@@ -1,0 +1,64 @@
+#include<iostream>
+using namespace std;
+//运算符重载，对运算符重新定义
+//对于内置数据类型编译器知道如何运算
+//加号运算符重载
+ 
+
+//1 通过成员函数重载
+class Person
+{
+public:
+	////1 通过成员函数重载
+	//Person operator+(Person& p)
+	//{
+	//	Person temp;
+	//	temp.m_a = this->m_a + p.m_a;
+	//	temp.m_b = this->m_b + p.m_b;
+	//	return temp;
+	//}
+	int m_a;
+	int m_b;
+};
+//全局函数重载
+Person operator+(Person& p1, Person p2)
+{
+	Person temp;
+	temp.m_a = p1.m_a + p2.m_a;
+	temp.m_b = p1.m_b + p2.m_b;
+	return temp;
+
+}
+//函数重载版本
+Person operator+(Person& p1, int a)
+{
+	Person temp;
+	temp.m_a = p1.m_a + a;
+	temp.m_b = p1.m_b + a;
+	return temp;
+
+}
+void test01()
+{
+	Person p1;
+	p1.m_a = 10;
+	p1.m_b = 10;
+	Person p2;
+	p2.m_a = 10;
+	p2.m_b = 10;
+	//成员函数重载本质
+	//Person p3 = p1.operator+(p2);
+	//全局函数重载本质
+	//Person p3 = operator+(p1,p2);
+	Person p3 = p1 + p2;
+	//运算符重载也可以发生函数重载
+	cout << p3.m_a <<" " << p3.m_b << endl;
+}
+int main()
+{
+	test01();
+
+
+	system("pause");
+	return 0;
+}
