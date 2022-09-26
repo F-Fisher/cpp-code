@@ -1,0 +1,22 @@
+#include<stdio.h>
+#include<string.h>
+#include<math.h>
+#include<time.h>
+#include<stdlib.h>
+int main(void)
+{
+	int i = 0;
+	char a[] = "asdaswdwewewewewewewewewew";
+	char b[] = "we";
+	char* p = strstr(a, b);
+	
+	
+	while( p != NULL)
+	{
+		i++;
+		p = p + strlen(b);
+		p = strstr(p, b);
+	}
+	printf(" %d", i);
+	return 0;
+}
