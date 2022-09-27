@@ -1,0 +1,77 @@
+#include<iostream>
+using namespace std;
+//继承方式
+//公共继承
+class Base1
+{
+public:
+	int m_A;
+protected:
+	int m_B;
+private:
+	int m_C;
+};
+class Son1 :public Base1
+{
+public:
+	void func()
+	{
+		m_A = 10;//父类公共可访问
+		m_B = 10;//父类保护权限依然是保护
+		//m_C = 10;//父类隐私无法继承
+	}
+
+
+
+};
+//保护继承
+class Son2 :protected Base1
+{
+public:
+	void func()
+	{
+		m_A = 10;//父类公共可访问,变为保护成员
+		m_B = 10;//父类保护权限依然是保护
+		//m_C = 10;//父类隐私无法继承
+	}
+
+
+
+};
+//私有继承
+class Son3 :protected Base1
+{
+public:
+	void func()
+	{
+		m_A = 10;//父类公共可访问,变为私有
+		m_B = 10;//父类保护权限变为私有
+		//m_C = 10;//父类隐私无法继承
+	}
+
+
+
+};
+void test1()
+{
+	Son1 s1;
+	s1.m_A = 100;
+	//s1.m_B = 100;//Son1中的b为保护，无法访问
+}
+void test2()
+{
+	Son2 s1;
+	//s1.m_A = 100;变为保护，无法访问
+	//s1.m_B = 100;//Son2中的b为保护，无法访问
+}
+void test3()
+{
+	Son3 s1;
+	//s1.m_A = 100;变为私有，无法访问
+	//s1.m_B = 100;//Son2中的b为私有，无法访问
+}
+int main()
+{
+	system("pause");
+	return 0;
+}
