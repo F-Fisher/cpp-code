@@ -1,0 +1,44 @@
+#include<iostream>
+using namespace std;
+//同名静态
+class Base
+{
+public:
+	static int m_a;
+	static void func()
+	{
+		cout << "base" << endl;
+	}
+
+};
+int Base::m_a = 100;
+class Son :public Base
+{
+public:
+	static int m_a;
+	static void func()
+	{
+		cout << "son" << endl;
+	}
+};
+int Son::m_a = 200;
+void test01()
+{
+	//通过对象访问
+	Son s;
+	cout << s.m_a << endl;
+	cout << s.Base::m_a << endl;
+	//通过类名访问
+	cout << Son::m_a << endl;
+	cout << Son::Base::m_a << endl;
+	s.func();
+	s.Base::func();
+	Son::func();
+	Son::Base::func();
+}
+int main()
+{
+	test01();
+	system("pause");
+	return 0;
+}
