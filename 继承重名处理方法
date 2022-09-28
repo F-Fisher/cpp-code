@@ -1,0 +1,46 @@
+#include<iostream>
+using namespace std;
+//同名子类父类处理
+class Base
+{
+public:
+	int m_a = 100;
+void func()
+{
+	cout << "Bfunc调用" << endl;
+}
+void func(int a)
+{
+	cout << "B int func调用" << endl;
+}
+
+};
+class Son :public Base
+{
+public:
+	int m_a = 1000;
+	void func()
+	{
+		cout << "Sfunc调用" << endl;
+	}
+
+};
+
+void test01()
+{
+	Son s;
+	cout << "Son m_a =" << s.m_a << endl;//直接访问是子类
+	cout << "Base m_a =" << s.Base::m_a << endl;//通过子类访问父类同名成员需要加作用域
+	s.func();//直接调用是子类
+	s.Base::func();//访问父级函数
+	//如果子类有重名，会隐藏父类所有隐藏同名函数
+	s.Base::func(100);
+}
+
+
+int main()
+{
+	test01();
+	system("pause");
+		return 0;
+}
