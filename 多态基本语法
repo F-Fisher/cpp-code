@@ -1,0 +1,37 @@
+#include<iostream>
+using namespace std;
+class Animal
+{
+public:
+	virtual void speak()
+	{
+		cout << "动物在说话" << endl;
+	}
+};
+class Cat:public Animal
+{
+public:
+	void speak()
+	{
+		cout << "猫在说话" << endl;
+	}
+};
+//地址早绑定 编译阶段绑定
+//如果想要猫叫，需要晚绑定 加virtual
+//动态多态满足条件，1有继承关系2子类重写父类虚函数
+//多态的使用  父类的引用或指针执行子类对象
+void doSpeak(Animal &animal)//anmial 引用指向cat
+{
+	animal.speak();
+}
+void test01()
+{
+	Cat cat;
+	doSpeak(cat);
+}
+int main()
+{
+	test01();
+	system("pause");
+	return 0;
+}
