@@ -1,0 +1,36 @@
+#include<iostream>
+using namespace std;
+class Animal
+{
+public:
+	int age;
+};
+class Sheep:public Animal
+{
+
+};
+class Tuo :public Animal
+{
+
+};
+class Yangtuo :virtual public Sheep, virtual public Tuo
+{
+
+};
+void test01()
+{
+	//菱形继承两个父类有相同数据，需要加作用域区分
+	Yangtuo Y;
+	Y.Sheep::age = 18;
+	Y.Tuo::age = 28;
+	
+    //菱形继承导致数据两份
+	//利用虚继承解决 在继承之前加virtual将数据融合
+	
+}
+int main()
+{
+	test01();
+	system("pause");
+	return 0;
+}
