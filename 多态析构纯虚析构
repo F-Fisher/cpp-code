@@ -1,0 +1,63 @@
+#include<iostream>
+#include<string>
+using namespace std;
+class Animal
+{
+public:
+	Animal()
+	{
+		cout << "A构造函数调用" << endl;
+	}
+	virtual void speak() = 0;
+
+	//virtual ~Animal()
+	//{
+	//	cout << "A析构函数调用" << endl;
+	//}
+	//
+	//纯虚析构需要声明，也需要实现
+	//有纯虚析构也属于抽象类，无法实例化
+	virtual ~Animal() = 0;
+};
+Animal:: ~Animal()
+{
+	cout << "animal纯虚析构" << endl;
+}
+class Cat:public Animal
+{
+public:
+	Cat(string name)
+	{
+		cout << "CAT构造函数调用" << endl;
+		m_name = new string(name);
+	}
+	virtual void speak()
+	{
+		cout <<*m_name<< "小猫在叫" << endl;
+	}
+	string* m_name;
+	//利用虚析构解决父类对象释放子类对象不干净的问题
+	virtual ~Cat()
+	{
+		if (m_name != NULL)
+		{
+			cout << "cat析构函数调用" << endl;
+			delete m_name;
+			m_name = NULL;
+		}
+	}
+};
+void test01()
+{
+	Animal* animal = new Cat("Tom");
+	animal->speak();
+	//父类指针在西沟的时候不会调用子类析构函数导致子类如果有堆区属性，会造成内存泄露
+	delete animal;
+
+}
+int main()
+{
+	test01();
+	system("pause");
+	return 0;
+}
