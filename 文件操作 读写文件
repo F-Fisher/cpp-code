@@ -1,0 +1,86 @@
+#include<iostream>
+#include<string>
+#include<fstream>//文件操作头文件
+using namespace std;
+//文本文件
+
+//写文件
+void test01()
+{
+	//创建流对象
+
+	ofstream ofs;
+
+	//指定打开方式
+
+	ofs.open("test.txt", ios::out);//以写文件方式打开4
+
+	//写文件
+
+	ofs << "闲渔" << endl << "666" << endl;
+}
+
+//读文件
+void test02()
+{
+	//创建流文件
+	ifstream ifs;
+
+	//打开文件，判断是否打开成功
+	ifs.open("test.txt", ios::in);
+	if (!ifs.is_open())
+	{
+		cout << "打开失败" << endl;
+		return;
+	}
+
+	//读数据
+
+	//1第一种
+	//char buf[1024] = { 0 };
+	//while (ifs >> buf)
+	//{
+	//	cout << buf << endl;
+	//}
+	
+
+	//2第二种
+	/*char buf[1024] = { 0 };
+	while (ifs.getline(buf, sizeof(buf)))
+	{
+		cout << buf << endl;
+	}*/
+
+
+	//3第三种
+	/*string buf;
+	while (getline(ifs, buf))
+	{
+		cout << buf << endl;
+	}*/
+
+
+
+	//第四种   不推荐
+	char c;
+	while ((c = ifs.get()) != EOF)
+	{
+		cout << c;
+	}
+
+
+
+	//关闭文件
+	ifs.close();
+
+}
+
+
+
+int main()
+{
+	test01();
+	test02();
+	system("pause");
+	return 0;
+}
