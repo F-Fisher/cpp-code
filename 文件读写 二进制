@@ -1,0 +1,68 @@
+#include<iostream>
+#include<string>
+#include<fstream>//文件操作头文件
+using namespace std;
+//文本文件
+//二进制
+
+//写文件
+
+class Person
+{
+public:
+	char m_Name[64];
+	int m_Age;
+
+
+};
+void test01()
+{
+	//创建流对象
+
+	ofstream ofs;
+
+	//打开文件
+
+	ofs.open("person.txt", ios::out | ios::binary);
+
+	//写文件
+	Person p = { "闲渔",20 };
+	ofs.write((const char*)&p, sizeof(Person));
+	//关闭文件
+	ofs.close();
+
+}
+
+
+//读文件
+
+void test02()
+{
+	//创建流对象
+	ifstream ifs;
+
+	//打开文件 是否打开成功
+	ifs.open("person.txt", ios::in | ios::binary);
+	if (!ifs.is_open())
+	{
+		cout << "打开失败" << endl;
+		return;
+	}
+	//读文件
+	Person s;
+	ifs.read((char*) & s, sizeof(Person));
+	cout << s.m_Name << s.m_Age << endl;
+
+
+	//关闭文件
+	ifs.close();
+
+
+}
+int main()
+{
+	test01();
+	test02();
+	system("pause");
+	return 0;
+}
