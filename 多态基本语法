@@ -4,23 +4,26 @@ class Animal
 {
 public:
 	virtual void speak()
+		//虚函数晚绑定,加virtual变为四个字节，vfptr虚函数指针，指向虚函数表
+		//虚函数表 vftable 表内部记录一个虚函数地址 Animal::speak
 	{
 		cout << "动物在说话" << endl;
 	}
 };
-class Cat:public Animal
+class Cat :public Animal
 {
 public:
 	void speak()
 	{
 		cout << "猫在说话" << endl;
+		//子类重写父类虚函数，子类虚函数表内部会替换成重写内容
 	}
 };
 //地址早绑定 编译阶段绑定
 //如果想要猫叫，需要晚绑定 加virtual
 //动态多态满足条件，1有继承关系2子类重写父类虚函数
 //多态的使用  父类的引用或指针执行子类对象
-void doSpeak(Animal &animal)//anmial 引用指向cat
+void doSpeak(Animal& animal)//anmial 引用指向cat
 {
 	animal.speak();
 }
@@ -29,9 +32,14 @@ void test01()
 	Cat cat;
 	doSpeak(cat);
 }
+void test02()
+{
+	cout << sizeof(Animal) << endl;
+}
 int main()
 {
 	test01();
+	test02();
 	system("pause");
 	return 0;
 }
