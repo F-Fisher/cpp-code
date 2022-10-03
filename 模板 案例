@@ -1,0 +1,75 @@
+#include<iostream>
+using namespace std;
+//实现通用对数组进行排序
+//规则，从大到小
+//算法 选择
+//测试 char 数组 int
+
+template<class T>
+void mySwap(T& a, T& b)
+{
+	T tmp = a;
+	a = b;
+	b = tmp;
+}
+
+
+
+
+template<class T>
+void mySort(T arr[], int len) 
+{
+	for (int i = 0; i < len; i++)
+	{
+		int max = i;
+		for (int j = i + 1; j < len; j++)
+		{
+			if (arr[max] < arr[j])
+			{
+				max = j;
+			}
+		}
+		if (max != i)
+		{
+			mySwap(arr[max], arr[i]);
+		}
+	}
+
+}
+//打印数组模板
+template<class T>
+void printArr(T arr[], int len)
+{
+	for (int i = 0; i < len; i++)
+	{
+		cout << arr[i] << " ";
+	}
+}
+void test01()
+{
+	//测试char数组
+	char charArr[] = "badcef";
+	int num = sizeof(charArr) / sizeof(char);
+	mySort(charArr, num);
+	printArr(charArr, num);
+
+
+}
+void test02()
+{
+	//测试int数组
+	int intarr[] = { 1,4,5,67,8,5,43,34,4 };
+	int num = sizeof(intarr) / sizeof(int);
+	mySort(intarr, num);
+	printArr(intarr, num);
+}
+int main()
+{
+	test01();
+	cout << endl;
+	test02();
+	system("pause");
+	return 0;
+
+
+}
