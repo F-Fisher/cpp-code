@@ -2,7 +2,9 @@
 #include<string>
 using namespace std;
 // 类模板
-template<class NameTape,class AgeTape>
+//没有自动类型推导
+//可以有默认函数类类型
+template<class NameTape = string,class AgeTape = int>
 class Person
 {
 public:
@@ -33,3 +35,4 @@ int main()
 	return 0;
 
 }
+
