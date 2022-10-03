@@ -1,0 +1,35 @@
+#include<iostream>
+#include<string>
+using namespace std;
+// 类模板
+template<class NameTape,class AgeTape>
+class Person
+{
+public:
+
+	Person(NameTape name,AgeTape age)
+	{
+		this->m_name = name;
+		this->m_age = age;
+	}
+	void showperson()
+	{
+		cout << this->m_name << " " << this->m_age << endl;
+	}
+	NameTape m_name;
+	AgeTape m_age;
+};
+void test01()
+{
+	Person <string, int>p1("ffisher", 18);
+	p1.showperson();
+
+
+}
+int main()
+{
+	test01();
+	system("pause");
+	return 0;
+
+}
